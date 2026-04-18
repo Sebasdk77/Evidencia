@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Prueba Login</title>
+</head>
+<body>
+
+<h2>Login</h2>
+<input type="text" id="user" placeholder="Usuario">
+<input type="password" id="pass" placeholder="Contraseña">
+<button onclick="login()">Ingresar</button>
+
+<div id="panel" style="display:none;">
+  <h3>Bienvenido</h3>
+
+  <input type="file" id="file">
+  <button onclick="subir()">Subir captura</button>
+
+  <div id="resultado"></div>
+
+  <button onclick="logout()">Cerrar sesión</button>
+</div>
+
+<script>
+function login(){
+  let user = document.getElementById("user").value;
+  let pass = document.getElementById("pass").value;
+
+  if(user && pass){
+    document.getElementById("panel").style.display = "block";
+  } else {
+    alert("Ingrese datos");
+  }
+}
+
+function subir(){
+  let file = document.getElementById("file").files[0];
+
+  if(file){
+    let img = document.createElement("img");
+    img.src = URL.createObjectURL(file);
+    img.width = 200;
+
+    document.getElementById("resultado").appendChild(img);
+  }
+}
+
+function logout(){
+  document.getElementById("panel").style.display = "none";
+}
+</script>
+
+</body>
+</html>
