@@ -3,23 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <title>Prueba Login</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 320px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    h2, h3 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #4facfe;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #007bff;
+    }
+
+    #panel {
+      margin-top: 20px;
+      display: none;
+    }
+
+    #resultado img {
+      margin-top: 10px;
+      border-radius: 5px;
+      max-width: 100%;
+      border: 2px solid #ddd;
+    }
+  </style>
 </head>
+
 <body>
 
-<h2>Login</h2>
-<input type="text" id="user" placeholder="Usuario">
-<input type="password" id="pass" placeholder="Contraseña">
-<button onclick="login()">Ingresar</button>
+<div class="container">
 
-<div id="panel" style="display:none;">
-  <h3>Bienvenido</h3>
+  <h2>Login</h2>
 
-  <input type="file" id="file">
-  <button onclick="subir()">Subir captura</button>
+  <input type="text" id="user" placeholder="Usuario">
+  <input type="password" id="pass" placeholder="Contraseña">
+  <button onclick="login()">Ingresar</button>
 
-  <div id="resultado"></div>
+  <div id="panel">
+    <h3>Bienvenido</h3>
 
-  <button onclick="logout()">Cerrar sesión</button>
+    <input type="file" id="file">
+    <button onclick="subir()">Subir captura</button>
+
+    <div id="resultado"></div>
+
+    <button onclick="logout()">Cerrar sesión</button>
+  </div>
+
 </div>
 
 <script>
@@ -30,7 +104,7 @@ function login(){
   if(user && pass){
     document.getElementById("panel").style.display = "block";
   } else {
-    alert("Ingrese datos");
+    alert("Ingrese usuario y contraseña");
   }
 }
 
@@ -43,6 +117,8 @@ function subir(){
     img.width = 200;
 
     document.getElementById("resultado").appendChild(img);
+  } else {
+    alert("Seleccione una imagen");
   }
 }
 
