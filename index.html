@@ -63,13 +63,6 @@
       margin-top: 20px;
       display: none;
     }
-
-    #resultado img {
-      margin-top: 10px;
-      border-radius: 5px;
-      max-width: 100%;
-      border: 2px solid #ddd;
-    }
   </style>
 </head>
 
@@ -85,11 +78,7 @@
 
   <div id="panel">
     <h3>Bienvenido</h3>
-
-    <input type="file" id="file">
-    <button onclick="subir()">Subir captura</button>
-
-    <div id="resultado"></div>
+    <p>Has iniciado sesión correctamente.</p>
 
     <button onclick="logout()">Cerrar sesión</button>
   </div>
@@ -105,20 +94,6 @@ function login(){
     document.getElementById("panel").style.display = "block";
   } else {
     alert("Ingrese usuario y contraseña");
-  }
-}
-
-function subir(){
-  let file = document.getElementById("file").files[0];
-
-  if(file){
-    let img = document.createElement("img");
-    img.src = URL.createObjectURL(file);
-    img.width = 200;
-
-    document.getElementById("resultado").appendChild(img);
-  } else {
-    alert("Seleccione una imagen");
   }
 }
 
